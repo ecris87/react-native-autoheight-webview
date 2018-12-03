@@ -262,7 +262,6 @@ const baseScript = isBelowKitKat
         };
         if (MathJax) {
           MathJax.Hub.Queue(function() {
-            // MathJax is done with its setup
             AutoHeightWebView.send(String(document.body.offsetHeight));
           });
         }
@@ -276,7 +275,6 @@ const baseScript = isBelowKitKat
         });
         if (MathJax) {
           MathJax.Hub.Queue(function() {
-            // MathJax is done with its setup
             window.postMessage(String(document.body.offsetHeight));
           });
         }
