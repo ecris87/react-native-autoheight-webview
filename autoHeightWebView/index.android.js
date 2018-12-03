@@ -260,6 +260,12 @@ const baseScript = isBelowKitKat
         AutoHeightWebView.onMessage = function (message) {
             AutoHeightWebView.send(String(document.body.offsetHeight));
         };
+        if (MathJax) {
+          MathJax.Hub.Queue(function() {
+            // MathJax is done with its setup
+            AutoHeightWebView.send(String(document.body.offsetHeight));
+          });
+        }
         ${domMutationObserveScript}
     } ());
     `
@@ -268,6 +274,12 @@ const baseScript = isBelowKitKat
         document.addEventListener('message', function (e) {
             window.postMessage(String(document.body.offsetHeight));
         });
+        if (MathJax) {
+          MathJax.Hub.Queue(function() {
+            // MathJax is done with its setup
+            window.postMessage(String(document.body.offsetHeight));
+          });
+        }
         ${domMutationObserveScript}
     } ());
     `;
